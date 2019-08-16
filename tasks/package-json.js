@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
-const cp = require('child_process');
 const _ = require('lodash');
 
 const PROP_BLACKLIST = ['eslintConfig', 'babel'];
