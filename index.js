@@ -4,6 +4,7 @@ const path = require('path');
 const installCRA = require('./tasks/cra');
 const modifyPackageJson = require('./tasks/package-json');
 const fileCleanup = require('./tasks/file-cleanup');
+const addSampleApp = require('./tasks/add-sample-app');
 
 const args = process.argv.slice(2);
 const appName = args[0];
@@ -27,3 +28,6 @@ modifyPackageJson(packageJson);
 
 // Remove unnecessary files and add new config files
 fileCleanup(modulePath, appPath);
+
+// Add sample app
+addSampleApp(modulePath, appPath);

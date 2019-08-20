@@ -7,14 +7,14 @@ function fileCleanup(modulePath, appPath) {
 
   cp.execSync('rm yarn.lock');
   cp.execSync('rm ./src/logo.svg');
-  cp.execSync('rm ./src/App.css');
+  cp.execSync('rm ./src/App.*');
   cp.execSync('rm ./public/favicon.ico');
   cp.execSync('rm ./public/logo*.png');
   cp.execSync('rm ./public/manifest.json');
 
   fs.copySync(configTemplates, appPath);
 
-  cp.execSync('touch .env && nvm current | cut -c 2- >> .env');
+  cp.execSync('touch .env && node --version | cut -c 2- >> .env');
 }
 
 module.exports = fileCleanup;
