@@ -87,6 +87,7 @@ tasks
     console.log();
     console.log();
     console.log('Npm commands for the new project:');
+    console.log();
     console.log(`${chalk.blueBright('npm start')}\n  Starts the development server`);
     console.log(`${chalk.blueBright('npm build')}\n  Bundles the app for production`);
     console.log(`${chalk.blueBright('npm test')}\n  Runs the unit tests`);
