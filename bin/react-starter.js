@@ -5,11 +5,11 @@ const chalk = require('chalk');
 const Listr = require('listr');
 const exec = require('execa');
 const emoji = require('node-emoji');
-const installDependencies = require('./tasks/dependencies');
-const modifyPackageJson = require('./tasks/package-json');
-const fileCleanup = require('./tasks/file-cleanup');
-const addSampleApp = require('./tasks/add-sample-app');
-const { log, error } = require('./log');
+const installDependencies = require('../tasks/dependencies');
+const modifyPackageJson = require('../tasks/package-json');
+const fileCleanup = require('../tasks/file-cleanup');
+const addSampleApp = require('../tasks/add-sample-app');
+const { log, error } = require('../utils/log');
 
 const args = process.argv.slice(2);
 const appName = args[0];

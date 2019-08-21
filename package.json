@@ -2,12 +2,11 @@
   "name": "@johnstonbl01/react-starter",
   "version": "1.0.0",
   "description": "A personalized React starter kit built on top of CRA",
-  "main": "index.js",
   "scripts": {
     "lint": "eslint ."
   },
   "bin": {
-    "johnstonbl01-react-starter": "./index.js"
+    "react-starter": "./bin/react-starter.js"
   },
   "repository": {
     "type": "git",
