@@ -58,7 +58,7 @@ const Particles = ({ rotation, onAnimationEnd }) => {
   );
 };
 
-function App({ increment, decrement, count }) {
+export const AppComponent = ({ increment, decrement, count }) => {
   const [particleId, setParticleId] = useState(0);
   const [particles, setParticles] = useState([]);
 
@@ -83,11 +83,13 @@ function App({ increment, decrement, count }) {
       </div>
       <div css={styles.counterButtons}>
         <ChangeCountButton
+          testId="increment-button"
           iconName="thumbsUp"
           containerStyle={{ marginRight: '1rem' }}
           onClick={onButtonClick(increment)}
         />
         <ChangeCountButton
+          testId="decrement-button"
           disabled={count === 0}
           iconName="thumbsDown"
           containerStyle={{ marginLeft: '1rem' }}
@@ -96,9 +98,16 @@ function App({ increment, decrement, count }) {
       </div>
     </main>
   );
-}
+};
 
-const ChangeCountButton = ({ iconName, containerStyle, iconStyle, onClick, disabled }) => {
+export const ChangeCountButton = ({
+  iconName,
+  containerStyle,
+  iconStyle,
+  onClick,
+  disabled,
+  testId
+}) => {
   const [isHovered, setHovered] = useState(false);
   const buttonIcon = isHovered ? `${iconName}Solid` : iconName;
 
@@ -106,6 +115,7 @@ const ChangeCountButton = ({ iconName, containerStyle, iconStyle, onClick, disab
     <div css={[styles.buttonContainer, containerStyle]}>
       <div css={[styles.buttonBorderHover, isHovered && styles.buttonBorderAnimate]} />
       <button
+        data-testid={testId}
         disabled={disabled}
         onClick={onClick}
         css={[styles.button]}
@@ -133,4 +143,4 @@ function generateRandomNumber(min, max) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(AppComponent);
