@@ -7,11 +7,21 @@ function installDependencies(appName) {
       {
         title: 'Create React App',
         task: () =>
-          exec('npx', ['create-react-app', appName]).then(() => process.chdir(`./${appName}`))
+          exec
+            .command(`npx create-react-app ${appName}`, {
+              shell: true
+            })
+            .then(() => process.chdir(`./${appName}`))
+            .catch(err => {
+              throw new Error(err.stderr || err);
+            })
       },
       {
         title: 'Eject CRA',
-        task: async () => await exec.command('yes | npm run eject', { shell: true })
+        task: async () =>
+          await exec.command('yes | npm run eject', { shell: true }).catch(err => {
+            throw new Error(err.stderr || err);
+          })
       }
     ]);
 }
