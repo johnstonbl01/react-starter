@@ -1,6 +1,6 @@
 {
   "name": "@johnstonbl01/react-starter",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A personalized React starter kit built on top of CRA",
   "scripts": {
     "lint": "eslint ."
