@@ -1,20 +1,22 @@
 const fs = require('fs-extra');
 const path = require('path');
-const cp = require('child_process');
+const exec = require('execa');
 
 function fileCleanup(modulePath, appPath) {
   const configTemplates = path.join(modulePath, 'templates/configs');
 
-  cp.execSync('rm yarn.lock');
-  cp.execSync('rm ./src/logo.svg');
-  cp.execSync('rm ./src/App.*');
-  cp.execSync('rm ./public/favicon.ico');
-  cp.execSync('rm ./public/logo*.png');
-  cp.execSync('rm ./public/manifest.json');
-
-  fs.copySync(configTemplates, appPath);
-
-  cp.execSync('touch .env && node --version | cut -c 2- >> .env');
+  return Promise.all([
+    exec('rm', ['yarn.lock']),
+    exec('rm', ['./src/logo.svg']),
+    exec('rm', ['./src/App.js']),
+    exec('rm', ['./src/App.test.js']),
+    exec('rm', ['./public/favicon.ico']),
+    exec('rm', ['./public/logo192.png']),
+    exec('rm', ['./public/logo512.png']),
+    exec('rm', ['./public/manifest.json']),
+    fs.copy(configTemplates, appPath),
+    exec.command('touch .nvmrc && node --version | cut -c 2- >> .nvmrc', { shell: true })
+  ]);
 }
 
 module.exports = fileCleanup;
