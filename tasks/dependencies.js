@@ -1,7 +1,5 @@
-const cp = require('child_process');
 const Listr = require('listr');
 const exec = require('execa');
-const chalk = require('chalk');
 
 function installDependencies(appName) {
   return () =>
